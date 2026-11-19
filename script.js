@@ -46,3 +46,44 @@ button.addEventListener("click", () => {
 // Remove an element: the last list item
 const lastItem = document.querySelector("#myList li:last-child");
 lastItem.remove();
+// =====================================================
+// Task 2: Accessing and changing the list "myList"
+// =====================================================
+
+// Access the list (two ways)
+const myList = document.getElementById("myList");
+const sameList = document.querySelector("#myList");
+console.log(myList === sameList); // true - both find the same element
+
+// Access the list items and print their text
+const items = myList.querySelectorAll("li");
+items.forEach(item => {
+    console.log(item.textContent);
+});
+
+// Change an existing item (the first one)
+myList.querySelector("li").textContent = "Updated item";
+
+// Remove an item FIRST (the last one) ...
+myList.lastElementChild.remove();
+
+// ... THEN add new items, so they are not removed directly again
+const newItem = document.createElement("li");
+newItem.textContent = "Item 4 (added by JavaScript)";
+myList.appendChild(newItem);
+
+const anotherItem = document.createElement("li");
+anotherItem.textContent = "Item 5 (added by JavaScript)";
+myList.appendChild(anotherItem);
+
+// Change list styling
+myList.style.color = "blue";
+
+// Interactive: click on an item to cross it out
+myList.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+        event.target.classList.toggle("done");
+        event.target.style.textDecoration =
+            event.target.classList.contains("done") ? "line-through" : "none";
+    }
+});
