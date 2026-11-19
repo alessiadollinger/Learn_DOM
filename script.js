@@ -87,3 +87,70 @@ myList.addEventListener("click", (event) => {
             event.target.classList.contains("done") ? "line-through" : "none";
     }
 });
+
+
+// =====================================================
+// Task 3: The div element (myDiv)
+// =====================================================
+// myDiv was already selected in Task 1:
+// const myDiv = document.getElementById("myDiv");
+
+// --- Read basic properties ---
+console.log(myDiv.tagName);       // "DIV"
+console.log(myDiv.id);            // "myDiv"
+console.log(myDiv.attributes);    // all HTML attributes of the div
+console.log(myDiv.parentElement); // <body>
+
+// --- Content: textContent vs innerHTML vs innerText ---
+console.log(myDiv.textContent);   // only text
+console.log(myDiv.innerHTML);     // text including HTML tags
+console.log(myDiv.innerText);     // text as visible on the page
+
+// --- Change the id (careful!) ---
+myDiv.id = "newId";
+console.log(document.getElementById("myDiv")); // null - not found anymore!
+myDiv.id = "myDiv";                            // change it back
+
+// --- CSS classes ---
+console.log(myDiv.className);       // "" - no class at the beginning
+myDiv.classList.add("highlight");
+myDiv.classList.add("box");
+console.log(myDiv.className);       // "highlight box"
+console.log(myDiv.classList.contains("box")); // true
+
+// --- Styles ---
+myDiv.style.border = "2px solid blue";
+myDiv.style.borderRadius = "10px";
+myDiv.style.width = "300px";
+
+// --- Attributes: tooltip ---
+myDiv.setAttribute("title", "I am a tooltip");
+console.log(myDiv.getAttribute("title")); // "I am a tooltip"
+
+// --- Children: add a span inside the div ---
+const span = document.createElement("span");
+span.textContent = " (I am a span inside the div)";
+myDiv.appendChild(span);
+console.log(myDiv.children);          // HTMLCollection with the span
+console.log(myDiv.children.length);   // 1
+
+// --- Extra (found by testing myself, not in Copilot's answer) ---
+console.log("Width:", myDiv.offsetWidth, "Height:", myDiv.offsetHeight);
+myDiv.contentEditable = "true";  // you can click into the div and type
+
+// --- Events: change color on mouse hover ---
+myDiv.addEventListener("mouseover", () => {
+    myDiv.style.backgroundColor = "lightgreen";
+});
+myDiv.addEventListener("mouseout", () => {
+    myDiv.style.backgroundColor = "lightyellow";
+});
+
+// --- Hide / show the div with a button ---
+const toggleButton = document.createElement("button");
+toggleButton.textContent = "Hide / show div";
+document.body.appendChild(toggleButton);
+
+toggleButton.addEventListener("click", () => {
+    myDiv.hidden = !myDiv.hidden;   // true = hidden, false = visible
+});

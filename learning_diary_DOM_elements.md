@@ -23,3 +23,32 @@
 - The script works because `<script src="script.js">` is at the end of the `<body>`, so the list already exists when the JavaScript runs.
 
 **My code:** changed the first item, removed the last item, added two new items, colored the list blue, clicking an item crosses it out.
+
+
+## Task 3: The `div` element
+
+A `<div>` is a general container without its own meaning. It has no form properties like `value` or `checked`, but the general properties every HTML element has.
+
+| Property | What it does |
+|---|---|
+| `id` | Unique identifier; found with `getElementById("myDiv")`. Can be changed – but then `getElementById("myDiv")` returns `null`. |
+| `tagName` | Type of the element: `"DIV"` (read-only) |
+| `textContent` | Reads/sets only the text, HTML tags are ignored |
+| `innerHTML` | Reads/sets the content including HTML tags, e.g. `<strong>` |
+| `innerText` | Text as it is visible on the page |
+| `className` / `classList` | CSS classes. `myDiv` has none at the beginning. `classList` has `add`, `remove`, `toggle`, `contains`. |
+| `style` | Inline CSS, e.g. `color`, `backgroundColor`, `padding`, `border` |
+| `title` | Tooltip on mouse hover; set with `setAttribute("title", "...")` |
+| `attributes` / `getAttribute()` / `setAttribute()` | Read and change HTML attributes |
+| `parentElement` | The element around the div – here `<body>` |
+| `children` | Direct child elements inside the div |
+| `hidden` | `true` hides the div, `false` shows it |
+| `offsetWidth` / `offsetHeight` | Size of the div in pixels (read-only) |
+| `contentEditable` | `"true"` lets the user type directly into the div |
+| `addEventListener()` | Reacts to events like `mouseover`, `mouseout`, `click` |
+
+- All changes only happen in the browser – the `index.html` file itself is not changed.
+- Most of these properties are not special for `div`, every HTML element has them.
+
+**My code:** changed the id and back, added classes, border and tooltip, put a span inside the div, made it editable, color change on hover and a button to hide/show the div. Size, children, parent and attributes are printed in the console.
+
